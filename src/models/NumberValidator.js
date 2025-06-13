@@ -4,7 +4,7 @@ export default class NumberValidator {
       toBeNumber: false,
       positive: false,
       minValue: Number.MIN_SAFE_INTEGER,
-      maxValue : Number.MAX_SAFE_INTEGER
+      maxValue: Number.MAX_SAFE_INTEGER,
     }
   }
 
@@ -31,7 +31,7 @@ export default class NumberValidator {
 
   isValid(number) {
     if (this.state.toBeNumber) {
-      if (typeof number === 'number') {
+      if (Number.isSafeInteger(number)) {
         return number >= this.state.minValue && number <= this.state.maxValue
       }
       return false
