@@ -1,7 +1,41 @@
 export default class NumberValidator {
   constructor() {
     this.state = {
-
+      toBeNumber: false,
+      positive: false,
+      minValue: Number.MIN_SAFE_INTEGER,
+      maxValue : Number.MAX_SAFE_INTEGER
     }
+  }
+
+  required() {
+    this.state.toBeNumber = true
+    return this
+  }
+
+  positive() {
+    this.state.positive = true
+    this.state.minValue = Number.MIN_VALUE
+    return this
+  }
+
+  range(min, max) {
+    let minValue = min
+    if (this.state.positive) {
+      minValue = Number.MIN_VALUE
+    }
+    this.state.minValue = minValue
+    this.state.maxValue = max
+    return this
+  }
+
+  isValid(number) {
+    if (this.state.toBeNumber) {
+      if (typeof number === 'number') {
+        return number >= this.state.minValue && number <= this.state.maxValue
+      }
+      return false
+    }
+    return true
   }
 }
