@@ -17,6 +17,9 @@
   "author": "vigilant.eth",
   "type": "module",
   "main": "index.js",
+  "jest": {
+    "modulePathIgnorePatterns": ["src/test.js"]
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },

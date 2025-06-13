@@ -1,5 +1,4 @@
 export default class StringValidator {
-
   constructor() {
     this.state = {
       toBeString: false,
@@ -31,6 +30,7 @@ export default class StringValidator {
         return false
       }
       return string.includes(substring) && string.length > minimumLength
-    } return true
+    }
+    return true
   }
 }
