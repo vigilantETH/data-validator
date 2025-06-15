@@ -20,7 +20,8 @@ export default class ArrayValidator {
     if (this.state.required) {
       if (Array.isArray(array)) {
         return array.length >= this.state.sizeof[0] && array.length <= this.state.sizeof[1]
-      } return false
+      }
+      return false
     }
     return true
   }
