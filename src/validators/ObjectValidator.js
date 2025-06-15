@@ -1,5 +1,4 @@
 export default class ObjectValidator {
-
   shape(objectSchema) {
     this.shape = objectSchema
   }
@@ -9,7 +8,7 @@ export default class ObjectValidator {
     const validityOfEach = objectEntries.map((el) => {
       const valueForValidation = el[1]
       const schemaForKey = this.shape[el[0]]
-      if(!schemaForKey) {
+      if (!schemaForKey) {
         return true
       }
       return schemaForKey.isValid(valueForValidation)

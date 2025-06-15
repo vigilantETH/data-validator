@@ -1,4 +1,4 @@
-import Validator from '../src/models/Validator.js'
+import Validator from '../src/Validator.js'
 
 let schema
 

@@ -36,7 +36,7 @@ export default class NumberValidator {
       }
       return false
     }
-    if(this.state.positive && Number.isSafeInteger(number)) {
+    if (this.state.positive && Number.isSafeInteger(number)) {
       return number > 0
     }
     return true
