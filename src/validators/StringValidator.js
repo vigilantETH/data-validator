@@ -4,6 +4,8 @@ export default class StringValidator {
       toBeString: false,
       substring: '',
       length: 0,
+      withTest: false,
+      tests: {},
     }
   }
 
@@ -22,7 +24,19 @@ export default class StringValidator {
     return this
   }
 
+  test(fnName, val) {
+    this.state.withTest = true
+    this.state.tests[fnName] = val
+    return this
+  }
+
   isValid(string) {
+    if (this.state.withTest) {
+      const result = Object.entries(this.state.tests).map(([fn, val]) => {
+        return this[fn](string, val)
+      })
+      return !result.includes(false)
+    }
     const minimumLength = this.state.length
     const substring = this.state.substring
     if (this.state.toBeString) {

@@ -5,6 +5,8 @@ export default class NumberValidator {
       positive: false,
       minValue: Number.MIN_SAFE_INTEGER,
       maxValue: Number.MAX_SAFE_INTEGER,
+      withTests: false,
+      tests: {},
     }
   }
 
@@ -29,7 +31,18 @@ export default class NumberValidator {
     return this
   }
 
+  test(fnName, val) {
+    this.state.withTest = true
+    this.state.tests[fnName] = val
+    return this
+  }
   isValid(number) {
+    if (this.state.withTest) {
+      const result = Object.entries(this.state.tests).map(([fn, val]) => {
+        return this[fn](number, val)
+      })
+      return !result.includes(false)
+    }
     if (this.state.toBeNumber) {
       if (Number.isSafeInteger(number)) {
         return number >= this.state.minValue && number <= this.state.maxValue
