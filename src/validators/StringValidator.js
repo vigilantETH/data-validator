@@ -43,8 +43,10 @@ export default class StringValidator {
       if (typeof string !== 'string') {
         return false
       }
-      return string.includes(substring) && string.length > minimumLength
     }
-    return true
+    if (typeof string !== 'string') {
+      return true
+    }
+    return string.includes(substring) && string.length > minimumLength
   }
 }
