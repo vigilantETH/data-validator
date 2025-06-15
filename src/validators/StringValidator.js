@@ -11,6 +11,7 @@ export default class StringValidator {
 
   required() {
     this.state.toBeString = true
+    this.state.length = 1
     return this
   }
 
