@@ -40,13 +40,3 @@ export default class Validator {
     }
   }
 }
-
-const v = new Validator();
-
-const fn = (array, value) => array.includes(value);
-v.addValidator('array', 'includes', fn);
-
-const schema = v.array().test('includes', 6)
-const res1 = schema.isValid([])
-const res2 = schema.isValid([1, 3, 6])
-console.log(res1, res2)

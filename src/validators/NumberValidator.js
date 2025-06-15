@@ -36,6 +36,7 @@ export default class NumberValidator {
     this.state.tests[fnName] = val
     return this
   }
+
   isValid(number) {
     if (this.state.withTest) {
       const result = Object.entries(this.state.tests).map(([fn, val]) => {

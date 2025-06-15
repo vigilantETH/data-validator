@@ -4,18 +4,18 @@ export default class ObjectValidator {
   }
 
   isValid(object) {
-    if (typeof object === 'object' && object !== null) {
-      const objectEntries = Object.entries(object)
-      const validityOfEach = objectEntries.map((el) => {
-        const valueForValidation = el[1]
-        const schemaForKey = this.shape[el[0]]
-        if (!schemaForKey) {
-          return true
-        }
-        return schemaForKey.isValid(valueForValidation)
-      })
-      return !validityOfEach.includes(false)
+    if (object === null) {
+      return true
     }
-    return false
+    const objectEntries = Object.entries(object)
+    const validityOfEach = objectEntries.map((el) => {
+      const valueForValidation = el[1]
+      const schemaForKey = this.shape[el[0]]
+      if (!schemaForKey) {
+        return true
+      }
+      return schemaForKey.isValid(valueForValidation)
+    })
+    return !validityOfEach.includes(false)
   }
 }
