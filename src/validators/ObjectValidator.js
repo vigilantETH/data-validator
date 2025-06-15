@@ -4,7 +4,7 @@ export default class ObjectValidator {
   }
 
   isValid(object) {
-    if (typeof object === 'object') {
+    if (typeof object === 'object' && object !== null) {
       const objectEntries = Object.entries(object)
       const validityOfEach = objectEntries.map((el) => {
         const valueForValidation = el[1]
@@ -18,6 +18,4 @@ export default class ObjectValidator {
     }
     return false
   }
-
-
 }
