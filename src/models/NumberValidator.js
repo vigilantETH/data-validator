@@ -22,7 +22,7 @@ export default class NumberValidator {
   range(min, max) {
     let minValue = min
     if (this.state.positive) {
-      minValue = Number.MIN_VALUE
+      minValue = this.state.minValue
     }
     this.state.minValue = minValue
     this.state.maxValue = max
@@ -35,6 +35,9 @@ export default class NumberValidator {
         return number >= this.state.minValue && number <= this.state.maxValue
       }
       return false
+    }
+    if(this.state.positive && Number.isSafeInteger(number)) {
+      return number > 0
     }
     return true
   }
