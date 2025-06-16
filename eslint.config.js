@@ -1,12 +1,28 @@
-import js from '@eslint/js'
 import globals from 'globals'
-import { defineConfig } from 'eslint/config'
-import stylistics from '@stylistic/eslint-plugin'
+import pluginJs from '@eslint/js'
+import stylistic from '@stylistic/eslint-plugin'
+// import { Linter } from 'eslint'
 
-export default defineConfig([
-
-  stylistics.configs.recommended,
-  { files: ['**/*.{js,mjs,cjs}'], plugins: { js }, extends: ['js/recommended'] },
-  { files: ['**/*.{js,mjs,cjs}'], languageOptions: { globals: globals.browser } },
-  { ignores: ['__tests__/**', 'src/test.js'] },
-])
+export default [
+  stylistic.configs.recommended,
+  pluginJs.configs.recommended,
+  {
+    files: [
+      '**/*.{js,ts,tsx}',
+    ],
+  },
+  {
+    ignores: ['__tests__'],
+  },
+  {
+    languageOptions: {
+      globals: globals.node,
+      parserOptions: {
+        projectService: true,
+      },
+    },
+    rules: {
+      '@typescript-eslint/no-unused-vars': 'off',
+    },
+  },
+] // satisfies Linter.Config[]
