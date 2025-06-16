@@ -5,30 +5,31 @@ import ObjectValidator from './validators/ObjectValidator.js';
 
 export default class Validator {
   constructor() {
-    this._validator = ''
+    this.validator = '';
   }
+
  string() {
-    this._validator = 'string'
+    this.validator = 'string';
     return new StringValidator();
   }
 
   number() {
-    this._validator = 'number'
+    this.validator = 'number';
     return new NumberValidator();
   }
 
   array() {
-    this._validator = 'array'
+    this.validator = 'array';
     return new ArrayValidator();
   }
 
   object() {
-    this._validator = 'object'
+    this.validator = 'object';
     return new ObjectValidator();
   }
 
   addValidator(type, fnName, fn) {
-    this._validator = type
+    this.validator = type;
     switch (type) {
       case 'string':
         StringValidator.prototype[fnName] = fn;
