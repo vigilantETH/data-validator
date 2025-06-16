@@ -32,13 +32,13 @@ export default class StringValidator {
   }
 
   isValid(string) {
-    const toBeString = this.state.toBeString
+    const { toBeString} = this.state;
     if (this.state.withTest) {
       const result = Object.entries(this.state.tests).map(([fn, val]) => this[fn](string, val));
       return !result.includes(false);
     }
-    const minimumLength = this.state.length;
-    const substring = this.state.substring;
+    const { length} = this.state;
+    const { substring } = this.state;
     if (toBeString) {
       if (typeof string !== 'string') {
         return false;
@@ -47,6 +47,6 @@ export default class StringValidator {
     if (typeof string !== 'string') {
       return true;
     }
-    return string.includes(substring) && string.length >= minimumLength;
+    return string.includes(substring) && string.length >= length;
   }
 }

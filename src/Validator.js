@@ -4,6 +4,7 @@ import ArrayValidator from './validators/ArrayValidator.js';
 import ObjectValidator from './validators/ObjectValidator.js';
 
 export default class Validator {
+
   string() {
     return new StringValidator();
   }
@@ -31,9 +32,7 @@ export default class Validator {
       case 'array':
         ArrayValidator.prototype[fnName] = fn;
         break;
-
       case 'object':
-
         break;
       default:
         console.log('Unsupported schema validator:', type);
