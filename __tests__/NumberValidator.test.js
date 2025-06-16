@@ -23,7 +23,7 @@ test('number schema positive', () => {
   expect(schema.isValid(123)).toBeTruthy();
   expect(schema.isValid(-123)).toBeFalsy();
   expect(schema.isValid(0)).toBeFalsy();
-})
+});
 
 test('number schema in range', () => {
   schema.required().range(-10, 10);
@@ -32,4 +32,4 @@ test('number schema in range', () => {
   schema.positive().range(-5, 5);
   expect(schema.isValid(-1)).toBeFalsy();
   expect(schema.isValid(5)).toBeTruthy();
-})
+});

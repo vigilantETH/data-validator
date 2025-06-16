@@ -24,11 +24,11 @@ test('string schema contains', () => {
   expect(schema.isValid('orange')).toBeTruthy();
   schema.contains('o');
   expect(schema.isValid('apple')).toBeFalsy();
-})
+});
 
 test('string schema min length', () => {
   schema.required();
   schema.minLength(15);
   expect(schema.isValid('eye')).toBeFalsy();
   expect(schema.isValid('The quick brown fox jumps over the lazy dog')).toBeTruthy();
-})
+});

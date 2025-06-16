@@ -6,48 +6,48 @@ export default class StringValidator {
       length: 0,
       withTest: false,
       tests: {},
-    }
+    };
   }
 
   required() {
-    this.state.toBeString = true
-    this.state.length = 1
-    return this
+    this.state.toBeString = true;
+    this.state.length = 1;
+    return this;
   }
 
   contains(substring) {
-    this.state.substring = substring
-    return this
+    this.state.substring = substring;
+    return this;
   }
 
   minLength(length) {
-    this.state.length = length
-    return this
+    this.state.length = length;
+    return this;
   }
 
   test(fnName, val) {
-    this.state.withTest = true
-    this.state.tests[fnName] = val
-    return this
+    this.state.withTest = true;
+    this.state.tests[fnName] = val;
+    return this;
   }
 
   isValid(string) {
     if (this.state.withTest) {
       const result = Object.entries(this.state.tests).map(([fn, val]) => {
-        return this[fn](string, val)
-      })
-      return !result.includes(false)
+        return this[fn](string, val);
+      });
+      return !result.includes(false);
     }
-    const minimumLength = this.state.length
-    const substring = this.state.substring
+    const minimumLength = this.state.length;
+    const substring = this.state.substring;
     if (this.state.toBeString) {
       if (typeof string !== 'string') {
-        return false
+        return false;
       }
     }
     if (typeof string !== 'string') {
-      return true
+      return true;
     }
-    return string.includes(substring) && string.length >= minimumLength
+    return string.includes(substring) && string.length >= minimumLength;
   }
 }

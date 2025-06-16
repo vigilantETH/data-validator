@@ -1,42 +1,42 @@
-import StringValidator from './validators/StringValidator.js'
-import NumberValidator from './validators/NumberValidator.js'
-import ArrayValidator from './validators/ArrayValidator.js'
-import ObjectValidator from './validators/ObjectValidator.js'
+import StringValidator from './validators/StringValidator.js';
+import NumberValidator from './validators/NumberValidator.js';
+import ArrayValidator from './validators/ArrayValidator.js';
+import ObjectValidator from './validators/ObjectValidator.js';
 
 export default class Validator {
   string() {
-    return new StringValidator()
+    return new StringValidator();
   }
 
   number() {
-    return new NumberValidator()
+    return new NumberValidator();
   }
 
   array() {
-    return new ArrayValidator()
+    return new ArrayValidator();
   }
 
   object() {
-    return new ObjectValidator()
+    return new ObjectValidator();
   }
 
   addValidator(type, fnName, fn) {
     switch (type) {
       case 'string':
-        StringValidator.prototype[fnName] = fn
-        break
+        StringValidator.prototype[fnName] = fn;
+        break;
       case 'number':
-        NumberValidator.prototype[fnName] = fn
-        break
+        NumberValidator.prototype[fnName] = fn;
+        break;
       case 'array':
-        ArrayValidator.prototype[fnName] = fn
-        break
+        ArrayValidator.prototype[fnName] = fn;
+        break;
 
       case 'object':
 
-        break
+        break;
       default:
-        console.log('Unsupported schema validator:', type)
+        console.log('Unsupported schema validator:', type);
     }
   }
 }
