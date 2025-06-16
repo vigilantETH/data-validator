@@ -8,7 +8,7 @@ export default class Validator {
     this.validator = '';
   }
 
- string() {
+  string() {
     this.validator = 'string';
     return new StringValidator();
   }
