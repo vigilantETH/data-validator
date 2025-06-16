@@ -39,9 +39,7 @@ export default class NumberValidator {
 
   isValid(number) {
     if (this.state.withTest) {
-      const result = Object.entries(this.state.tests).map(([fn, val]) => {
-        return this[fn](number, val);
-      });
+      const result = Object.entries(this.state.tests).map(([fn, val]) => this[fn](number, val));
       return !result.includes(false);
     }
     if (this.state.toBeNumber) {

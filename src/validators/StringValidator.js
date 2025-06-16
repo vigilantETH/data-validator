@@ -32,15 +32,14 @@ export default class StringValidator {
   }
 
   isValid(string) {
+    const toBeString = this.state.toBeString
     if (this.state.withTest) {
-      const result = Object.entries(this.state.tests).map(([fn, val]) => {
-        return this[fn](string, val);
-      });
+      const result = Object.entries(this.state.tests).map(([fn, val]) => this[fn](string, val));
       return !result.includes(false);
     }
     const minimumLength = this.state.length;
     const substring = this.state.substring;
-    if (this.state.toBeString) {
+    if (toBeString) {
       if (typeof string !== 'string') {
         return false;
       }
