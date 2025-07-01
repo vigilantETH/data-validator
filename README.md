@@ -1,7 +1,7 @@
-### Quick start
+### Description
 This package provide class for creating your own validation schema in fluent-interface way.
 
-Example
+### Quick start
 
 import Validator from 'data-validator';
 
